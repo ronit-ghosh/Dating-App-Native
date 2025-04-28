@@ -34,6 +34,7 @@ export default function Gender() {
               GENDERS.map((gender, i) => {
                 return (
                   <RadioButton.Item
+                    key={i}
                     labelVariant='bodyMedium'
                     labelStyle={styles.genderLabel}
                     color={Colors.primary}

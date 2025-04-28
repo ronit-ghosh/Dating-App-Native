@@ -5,36 +5,16 @@ import { Colors } from '@/utils/Constants'
 import { useState } from 'react'
 import NextButton from '@/components/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
-import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Sexuality() {
+export default function DateGender() {
     const [sexuality, setSexuality] = useState<string>('');
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const SEXUALITIES = [
-        "Prefer not to say",
-        "Straight",
-        "Gay",
-        "Lesbian",
-        "Bisexual",
-        "Allosexual",
-        "Androsexual",
-        "Asexual",
-        "Autosexual",
-        "Bicurious",
-        "Demisexual",
-        "Fluid",
-        "Greysexual",
-        "Gynesexual",
-        "Monosexual",
-        "Omnisexual",
-        "Pansexual",
-        "Polysexual",
-        "Queer",
-        "Questioning",
-        "Skoliosexual",
-        "Spectrasexual",
-        "Not listed"
+        "man",
+        "woman",
+        "non-binary-people",
+        "everyone"
     ]
 
     return (
@@ -44,7 +24,7 @@ export default function Sexuality() {
                     variant='h0'
                     style={styles.title}
                     fontFamily='ManropeBold'>
-                    What's your sexuality?
+                   Who would you like to date?
                 </CustomText>
                 <ScrollView style={styles.selectSexContainer}>
                     <RadioButton.Group
@@ -53,27 +33,21 @@ export default function Sexuality() {
                         {
                             SEXUALITIES.map((sex, i) => {
                                 return (
-                                    <RadioButton.Item
-                                        // @ts-ignore
-                                        background=""
-                                        key={i}
-                                        labelVariant='bodyMedium'
-                                        labelStyle={styles.sexLabel}
-                                        color={Colors.primary}
-                                        style={styles.sexBlock}
-                                        label={sex}
-                                        value={sex}
-                                    />
+                                    <View key={i} style={styles.genderListContainer}>
+                                        <Checkbox.Item
+                                            labelVariant='bodyLarge'
+                                            // @ts-ignore
+                                            background=""
+                                            labelStyle={styles.gendeList}
+                                            label={sex}
+                                            
+                                        />
+                                    </View>
                                 );
                             })
                         }
                     </RadioButton.Group>
                 </ScrollView>
-                <LinearGradient
-                    colors={['rgba(255, 255, 255, 0)', '#fff']}
-                    style={styles.gradient}
-                    pointerEvents="none"
-                />
             </View>
             <View style={styles.helperContainer}>
                 <Checkbox.Item
@@ -106,37 +80,8 @@ const styles = StyleSheet.create({
     title: {
         color: Colors.text
     },
-    desc: {
-        color: Colors.text,
-        opacity: 0.5
-    },
-    input: {
-        width: "100%",
-        height: 65,
-        margin: "auto",
-        fontSize: 18,
-        fontFamily: "PoppinsSemiBold",
-        paddingTop: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.text
-    },
     selectSexContainer: {
-        marginTop: 20,
-        height: "65%",
-        position: "relative"
-    },
-    sexBlock: {
-        borderBottomWidth: 1,
-        borderBottomColor: "#999",
-        paddingVertical: 10,
-        flexDirection: "row",
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        fontFamily: "PoppinsRegular"
-    },
-    sexLabel: {
-        fontFamily: "PoppinsMedium",
-        textTransform: "capitalize"
+        marginTop: 20
     },
     helperContainer: {
         alignSelf: "auto",
@@ -149,6 +94,13 @@ const styles = StyleSheet.create({
         opacity: 0.5,
         width: "70%",
     },
+    gendeList: {
+        textTransform: "capitalize",
+        fontFamily: "PoppinsMedium"
+    },
+    genderListContainer: {
+        borderBottomWidth: 1
+    },
     showOnProfile: {
         fontFamily: "PoppinsLight"
     },
@@ -157,7 +109,7 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
-        height: 60, // Adjust height as needed
+        height: 60,
         zIndex: 1,
         pointerEvents: 'none',
     }
