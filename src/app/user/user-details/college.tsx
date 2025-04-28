@@ -1,17 +1,18 @@
 import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, View } from 'react-native'
 import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
-import { ExternalLink } from '@/components/helper/ExternalLink'
 import { useState } from 'react'
 import NextButton from '@/components/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { emailStyles as styles } from '@/styles/email.styles'
+import { Checkbox } from 'react-native-paper'
 
-export default function Email() {
-    const [email, setEmail] = useState<string>()
+export default function JobTitle() {
+    const [study, setStudy] = useState<string>()
+    const [showOnProfile, setShowOnProfile] = useState(false)
 
     const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setEmail(text.nativeEvent.text)
+        setStudy(text.nativeEvent.text)
     }
 
     return (
@@ -21,16 +22,7 @@ export default function Email() {
                     variant='h0'
                     style={styles.title}
                     fontFamily='ManropeBold'>
-                    Provide your email
-                </CustomText>
-                <CustomText
-                    variant='h7'
-                    fontFamily='PoppinsLight'
-                    style={styles.desc}>
-                    Email verification helps us keep{"\n"}your account secure.{" "}
-                    <ExternalLink href='https://lume.ronitghosh.site/learn-more'>
-                        Learn More
-                    </ExternalLink>
+                    Where did you study?
                 </CustomText>
                 <View>
                     <TextInput
@@ -40,13 +32,16 @@ export default function Email() {
                 </View>
             </View>
             <View style={styles.helperContainer}>
-                <CustomText
-                    variant='h8'
-                    fontFamily='PoppinsLight'
-                    style={styles.helper}>
-                    You can use any email, it just have to match proper email format.
-                </CustomText>
-                <NextButton path={"/user/name" as RelativePathString} />
+            <Checkbox.Item
+                    labelVariant='bodyMedium'
+                    // @ts-ignore
+                    background=""
+                    labelStyle={UniStyles.showOnProfile}
+                    onPress={() => setShowOnProfile(!showOnProfile)}
+                    label="Visible on your profile."
+                    status={showOnProfile ? "checked" : "unchecked"}
+                />
+                <NextButton path={"/user/user-details/degree" as RelativePathString} />
             </View>
         </View>
     )

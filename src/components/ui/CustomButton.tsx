@@ -17,7 +17,7 @@ export default function CustomButton({ children, style, onpress, isCircle, textC
                 paddingVertical: 0,
                 paddingHorizontal: 0
             }]}>
-            <CustomText style={{
+            <CustomText fontFamily='PoppinsMedium' style={{
                 color: textColor ? textColor : Colors.background
             }} variant='h5'>
                 {children}

@@ -5,9 +5,10 @@ import CustomButton from './ui/CustomButton';
 import CustomText from './ui/CustomText';
 import { Colors } from '@/utils/Constants';
 import { ExternalLink } from './helper/ExternalLink';
-import { useRouter } from 'expo-router';
+import { RelativePathString, useRouter } from 'expo-router';
+import NextButton from './NextButton';
 
-export default function Signin() {
+export default function Signup() {
     const videoSource = require("@/assets/videos/lume.mp4");
     const router = useRouter()
     return (
@@ -63,10 +64,12 @@ export default function Signin() {
                     </CustomButton>
                     <CustomButton
                         textColor='#eee'
-                        // onpress={() => router.push('/user/email')}
+                        onpress={() => router.push('/signin/signin')}
                         style={styles.btn2}>
                         Sign in
                     </CustomButton>
+                    {/* TODO: DELETE LATER */}
+                    <NextButton style={{zIndex:10}} path={'/main/home' as RelativePathString}>APP</NextButton>
                 </View>
             </View>
         </View>

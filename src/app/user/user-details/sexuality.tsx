@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
 import { Colors } from '@/utils/Constants'
@@ -6,6 +6,8 @@ import { useState } from 'react'
 import NextButton from '@/components/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
+import { UniStyles } from '@/styles/Styles'
+import { sexualityStyles as styles } from '@/styles/sexuality.styles'
 
 export default function Sexuality() {
     const [sexuality, setSexuality] = useState<string>('');
@@ -38,7 +40,7 @@ export default function Sexuality() {
     ]
 
     return (
-        <View style={styles.container}>
+        <View style={UniStyles.container}>
             <View style={styles.upper}>
                 <CustomText
                     variant='h0'
@@ -54,8 +56,6 @@ export default function Sexuality() {
                             SEXUALITIES.map((sex, i) => {
                                 return (
                                     <RadioButton.Item
-                                        // @ts-ignore
-                                        background=""
                                         key={i}
                                         labelVariant='bodyMedium'
                                         labelStyle={styles.sexLabel}
@@ -90,75 +90,3 @@ export default function Sexuality() {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "space-between",
-        paddingVertical: 40,
-        marginHorizontal: 10,
-        margin: "auto",
-    },
-    upper: {
-        alignSelf: "auto",
-        marginTop: 40
-    },
-    title: {
-        color: Colors.text
-    },
-    desc: {
-        color: Colors.text,
-        opacity: 0.5
-    },
-    input: {
-        width: "100%",
-        height: 65,
-        margin: "auto",
-        fontSize: 18,
-        fontFamily: "PoppinsSemiBold",
-        paddingTop: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.text
-    },
-    selectSexContainer: {
-        marginTop: 20,
-        height: "65%",
-        position: "relative"
-    },
-    sexBlock: {
-        borderBottomWidth: 1,
-        borderBottomColor: "#999",
-        paddingVertical: 10,
-        flexDirection: "row",
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        fontFamily: "PoppinsRegular"
-    },
-    sexLabel: {
-        fontFamily: "PoppinsMedium",
-        textTransform: "capitalize"
-    },
-    helperContainer: {
-        alignSelf: "auto",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    },
-    helper: {
-        color: Colors.text,
-        opacity: 0.5,
-        width: "70%",
-    },
-    showOnProfile: {
-        fontFamily: "PoppinsLight"
-    },
-    gradient: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        bottom: 0,
-        height: 60, // Adjust height as needed
-        zIndex: 1,
-        pointerEvents: 'none',
-    }
-})

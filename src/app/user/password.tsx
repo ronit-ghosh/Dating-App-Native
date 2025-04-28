@@ -1,11 +1,13 @@
-import { NativeSyntheticEvent, StyleSheet, TextInput, TextInputChangeEventData, View } from 'react-native'
+import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, View } from 'react-native'
 import CustomText from '@/components/ui/CustomText'
-import { RelativePathString } from 'expo-router'
-import { Colors } from '@/utils/Constants'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import NextButton from '@/components/NextButton'
+import { UniStyles } from '@/styles/Styles'
+import { passwordStyles as styles } from '@/styles/password.styles'
 
 export default function Password() {
+    const router = useRouter()
     const [password, setpassword] = useState<string>()
 
     const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
@@ -13,7 +15,7 @@ export default function Password() {
     }
 
     return (
-        <View style={styles.container}>
+        <View style={UniStyles.container}>
             <View style={styles.upper}>
                 <CustomText>
                     {password}
@@ -28,7 +30,7 @@ export default function Password() {
                     variant='h7'
                     fontFamily='PoppinsLight'
                     style={styles.desc}>
-                   A strong password helps to secure your account.
+                    A strong password helps to secure your account.
                 </CustomText>
                 <View>
                     <TextInput
@@ -44,50 +46,11 @@ export default function Password() {
                     style={styles.helper}>
                     We hash your password to keep it safe.
                 </CustomText>
-                <NextButton path={"/user/user-details/more-details" as RelativePathString} />
+                <NextButton onpressfn={() => {
+                    router.dismissAll()
+                    router.replace("/user/user-details/more-details")
+                }} />
             </View>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "space-between",
-        paddingVertical: 40,
-        marginHorizontal: 10,
-        margin: "auto"
-    },
-    upper: {
-        alignSelf: "auto",
-        marginTop: 40
-    },
-    title: {
-        color: Colors.text
-    },
-    desc: {
-        color: Colors.text,
-        opacity: 0.5
-    },
-    input: {
-        width: "100%",
-        height: 65,
-        margin: "auto",
-        fontSize: 18,
-        fontFamily: "PoppinsSemiBold",
-        paddingTop: 20,
-        borderBottomWidth: 1,
-        borderBottomColor: Colors.text
-    },
-    helperContainer: {
-        alignSelf: "auto",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between"
-    },
-    helper: {
-        color: Colors.text,
-        opacity: 0.5,
-        width: "70%"
-    }
-})

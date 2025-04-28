@@ -6,15 +6,19 @@ import AntDesign from '@expo/vector-icons/AntDesign'
 interface NextButtonTypes {
     path?: RelativePathString | ExternalPathString | "/"
     style?: ViewStyle
+    onpressfn?: () => void
 }
 
 export default function NextButton(props: NextButtonTypes) {
     const router = useRouter()
-    const { path, style } = props
+    const { path, style, onpressfn } = props
 
     return (
         <CustomButton
-            onpress={() => router.push(path as RelativePathString)}
+            onpress={
+                onpressfn? onpressfn :
+                () => router.push(path as RelativePathString)
+            }
             isCircle
             style={[styles.btn, style!]}>
             <AntDesign name="arrowright" size={24} color="#eee" />

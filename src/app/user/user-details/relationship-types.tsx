@@ -8,16 +8,15 @@ import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
 
-export default function DateGender() {
-    const [gender, setGender] = useState<string>('');
+export default function RelationshipType() {
+    const [relationshipType, setRelationshipType] = useState<string>('');
     const [showOnProfile, setShowOnProfile] = useState(false)
 
-    const GENDERS = [
-        "man",
-        "woman",
-        "non-binary",
-        "everyone"
-    ]
+    const RELATIONSHIP_TYPE = [
+        "monogamy",
+        "non-monogamy",
+        "figuring out my relationship type"
+      ]      
 
     return (
         <View style={UniStyles.container}>
@@ -30,10 +29,10 @@ export default function DateGender() {
                 </CustomText>
                 <View style={styles.selectSexContainer}>
                     <RadioButton.Group
-                        onValueChange={value => setGender(value)}
-                        value={gender}>
+                        onValueChange={value => setRelationshipType(value)}
+                        value={relationshipType}>
                         {
-                            GENDERS.map((gender, i) => {
+                            RELATIONSHIP_TYPE.map((relationshipType, i) => {
                                 return (
                                     <RadioButton.Item
                                         key={i}
@@ -41,8 +40,8 @@ export default function DateGender() {
                                         labelStyle={styles.sexLabel}
                                         color={Colors.primary}
                                         style={styles.sexBlock}
-                                        label={gender}
-                                        value={gender}
+                                        label={relationshipType}
+                                        value={relationshipType}
                                     />
                                 );
                             })
@@ -60,7 +59,7 @@ export default function DateGender() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/dating-intention" as RelativePathString} />
+                <NextButton path={"/user/user-details/work" as RelativePathString} />
             </View>
         </View>
     )

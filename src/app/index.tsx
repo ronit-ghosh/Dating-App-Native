@@ -1,13 +1,12 @@
-import Signin from '@/components/Signin'
+import Signup from '@/components/Signup';
 import { View, StyleSheet } from 'react-native'
-import Sexuality from './user/user-details/sexuality';
-import DateGender from './user/user-details/date-gender';
+import Home from './main/home';
 
 export default function Index() {
     return (
         <View style={styles.container}>
-            {/* <Signin /> */}
-            <DateGender />
+            {/* <Signup /> */}
+            <Home/>
         </View>
     )
 }

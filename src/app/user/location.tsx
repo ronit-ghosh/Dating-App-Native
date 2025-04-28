@@ -1,12 +1,14 @@
 import NextButton from '@/components/NextButton';
 import CustomText from '@/components/ui/CustomText';
 import { RelativePathString } from 'expo-router';
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, TextInput } from 'react-native'
 import MapView from 'react-native-maps';
+import { locationStyles as styles } from '@/styles/location.styles';
+import { UniStyles } from '@/styles/Styles';
 
 export default function Location() {
     return (
-        <View style={styles.container}>
+        <View style={UniStyles.container}>
             <View>
                 <CustomText
                     fontFamily='ManropeBold'
@@ -33,32 +35,3 @@ export default function Location() {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        gap: 30,
-        paddingVertical: 40,
-        marginHorizontal: 10
-    },
-    mapContainer: {
-        width: "90%",
-        height: "50%",
-        marginHorizontal: "auto"
-    },
-    map: {
-        width: '100%',
-        height: '100%',
-    },
-    desc: {
-        opacity: 0.6
-    },
-    input: {
-        width: "95%",
-        marginHorizontal: "auto",
-        borderBottomColor: "#111",
-        borderBottomWidth: 1,
-        fontFamily: "PoppinsMedium",
-        fontSize: 12
-    }
-})
