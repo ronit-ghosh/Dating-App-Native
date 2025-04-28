@@ -5,22 +5,21 @@ import CustomButton from './ui/CustomButton';
 import CustomText from './ui/CustomText';
 import { Colors } from '@/utils/Constants';
 import { ExternalLink } from './helper/ExternalLink';
-import { RelativePathString, useRouter } from 'expo-router';
-import NextButton from './NextButton';
+import { useRouter } from 'expo-router';
 
 export default function Signup() {
     const videoSource = require("@/assets/videos/lume.mp4");
     const router = useRouter()
     return (
         <View style={styles.container}>
-            <Video
+            {/* <Video
                 source={videoSource}
                 style={styles.video}
                 // @ts-ignore
                 resizeMode="cover"
                 shouldPlay
                 isLooping
-            />
+            /> */}
             <LinearGradient
                 colors={['transparent', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.9)']}
                 style={styles.gradient}
@@ -64,12 +63,16 @@ export default function Signup() {
                     </CustomButton>
                     <CustomButton
                         textColor='#eee'
-                        onpress={() => router.push('/signin/signin')}
+                        onpress={() => router.push('/signin/signin-page')}
                         style={styles.btn2}>
                         Sign in
                     </CustomButton>
-                    {/* TODO: DELETE LATER */}
-                    <NextButton style={{zIndex:10}} path={'/main/home' as RelativePathString}>APP</NextButton>
+                    <CustomButton
+                        textColor='#eee'
+                        onpress={() => router.push('/main/home')}
+                        style={styles.btn2}>
+                        Home
+                    </CustomButton>
                 </View>
             </View>
         </View>

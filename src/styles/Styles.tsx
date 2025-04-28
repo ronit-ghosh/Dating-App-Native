@@ -6,8 +6,7 @@ export const UniStyles = StyleSheet.create({
         flex: 1,
         justifyContent: "space-between",
         paddingVertical: 40,
-        marginHorizontal: 10,
-        margin: "auto"
+        marginHorizontal: 10
     },
     upper: {
         alignSelf: "auto",
@@ -23,7 +22,6 @@ export const UniStyles = StyleSheet.create({
     input: {
         width: "100%",
         height: 65,
-        margin: "auto",
         fontSize: 18,
         fontFamily: "PoppinsSemiBold",
         paddingTop: 20,
@@ -43,8 +41,7 @@ export const UniStyles = StyleSheet.create({
     },
     showOnProfile: {
         fontFamily: "PoppinsLight"
-    },
+    }
 });
-
 
 

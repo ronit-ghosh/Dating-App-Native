@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   img: {
     width: "100%",
     height: "70%",
-    margin: "auto",
     objectFit: "cover"
   }
 })

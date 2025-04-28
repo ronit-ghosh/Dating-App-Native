@@ -1,5 +1,5 @@
 import { ExternalPathString, RelativePathString, useRouter } from 'expo-router'
-import CustomButton from './ui/CustomButton'
+import CustomButton from './CustomButton'
 import { StyleSheet, ViewStyle } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign'
 

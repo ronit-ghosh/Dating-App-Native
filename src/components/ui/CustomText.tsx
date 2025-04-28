@@ -1,6 +1,6 @@
 import { Colors } from '@/utils/Constants'
 import { FC } from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet, ViewStyle } from 'react-native'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 interface CustomTextProps {
@@ -45,6 +45,7 @@ const CustomText: FC<CustomTextProps> = ({
 }) => {
     return (
         <Text
+            ellipsizeMode='tail'
             numberOfLines={numberOfLines ? numberOfLines : undefined}
             style={[
                 styles.text, {
@@ -63,6 +64,6 @@ export default CustomText
 const styles = StyleSheet.create({
     text: {
         color: Colors.text,
-        textAlign: "left"
+        textAlign: "left",
     }
 })

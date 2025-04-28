@@ -2,7 +2,7 @@ import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, View } from 
 import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
 import { useState } from 'react'
-import NextButton from '@/components/NextButton'
+import NextButton from '@/components/ui/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { emailStyles as styles } from '@/styles/email.styles'
 import { Checkbox } from 'react-native-paper'

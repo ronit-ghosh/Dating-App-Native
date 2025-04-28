@@ -1,4 +1,4 @@
-import NextButton from '@/components/NextButton';
+import NextButton from '@/components/ui/NextButton';
 import CustomText from '@/components/ui/CustomText';
 import { RelativePathString } from 'expo-router';
 import { View, TextInput } from 'react-native'

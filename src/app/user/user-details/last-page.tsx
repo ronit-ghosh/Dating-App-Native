@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 import React from 'react'
-import NextButton from '@/components/NextButton'
+import NextButton from '@/components/ui/NextButton'
 import { useRouter } from 'expo-router'
 
 export default function Last() {

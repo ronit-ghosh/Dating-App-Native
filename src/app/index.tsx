@@ -5,8 +5,8 @@ import Home from './main/home';
 export default function Index() {
     return (
         <View style={styles.container}>
-            {/* <Signup /> */}
-            <Home/>
+            <Signup />
+            {/* <Home/> */}
         </View>
     )
 }

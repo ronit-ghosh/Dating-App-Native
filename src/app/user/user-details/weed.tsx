@@ -3,7 +3,7 @@ import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
 import { Colors } from '@/utils/Constants'
 import { useState } from 'react'
-import NextButton from '@/components/NextButton'
+import NextButton from '@/components/ui/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'

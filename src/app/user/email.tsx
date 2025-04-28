@@ -3,7 +3,7 @@ import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
 import { ExternalLink } from '@/components/helper/ExternalLink'
 import { useState } from 'react'
-import NextButton from '@/components/NextButton'
+import NextButton from '@/components/ui/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { emailStyles as styles } from '@/styles/email.styles'
 

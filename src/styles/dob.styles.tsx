@@ -35,14 +35,12 @@ export const dobStyles = StyleSheet.create({
     input: {
         width: "10%",
         height: 45,
-        margin: "auto",
         fontSize: 18,
         fontFamily: "PoppinsSemiBold",
         textAlign: "center"
     },
     underline: {
         width: "10%",
-        margin: "auto",
         borderWidth: 1,
         borderColor: "#111",
         textDecorationLine: "underline"

@@ -1,5 +1,5 @@
 import { Colors } from '@/utils/Constants'
-import { StyleSheet, TouchableOpacity, ViewStyle } from 'react-native'
+import { Pressable, StyleSheet, ViewStyle } from 'react-native'
 import CustomText from './CustomText'
 
 export default function CustomButton({ children, style, onpress, isCircle, textColor }: {
@@ -10,9 +10,9 @@ export default function CustomButton({ children, style, onpress, isCircle, textC
     textColor?: string
 }) {
     return (
-        <TouchableOpacity
+        <Pressable
+            android_disableSound
             onPress={onpress}
-            activeOpacity={0.95}
             style={[styles.btn, style, isCircle && {
                 paddingVertical: 0,
                 paddingHorizontal: 0
@@ -22,7 +22,7 @@ export default function CustomButton({ children, style, onpress, isCircle, textC
             }} variant='h5'>
                 {children}
             </CustomText>
-        </TouchableOpacity>
+        </Pressable>
     )
 }
 

@@ -1,0 +1,25 @@
+import { View } from 'react-native'
+import { homeStyles as styles } from '@/styles/home.styles'
+import CustomText from './ui/CustomText'
+
+export default function PromptCard({ title, desc }: {
+    title: string
+    desc: string
+}) {
+    return (
+        <View style={[styles.card, styles.promptCard]}>
+            <CustomText
+                variant='h5'
+                fontFamily='PoppinsRegular'>
+                {title}
+            </CustomText>
+            <CustomText
+            style={{flexShrink: 1}}
+                numberOfLines={8}
+                variant='h2'
+                fontFamily='ManropeBold'>
+                {desc}
+            </CustomText>
+        </View>
+    )
+}

@@ -12,7 +12,6 @@ export const nameStyles = StyleSheet.create({
     input: {
         width: "49%",
         height: 65,
-        margin: "auto",
         fontSize: 18,
         fontFamily: "PoppinsRegular",
         paddingTop: 20,
