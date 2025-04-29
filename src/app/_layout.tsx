@@ -2,7 +2,7 @@ import { Stack } from 'expo-router'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,14 +28,14 @@ export default function RootLayout() {
     }, [loaded, error]);
 
     if (!loaded && !error) {
-    return null;
+        return null;
     }
 
     return (
         <>
             <StatusBar
-                barStyle="light-content"
-                backgroundColor="#282828"
+                translucent
+                style='inverted'
             />
             <Stack
                 screenOptions={{

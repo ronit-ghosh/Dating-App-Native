@@ -2,13 +2,24 @@ import { Colors } from '@/utils/Constants'
 import { Pressable, StyleSheet, ViewStyle } from 'react-native'
 import CustomText from './CustomText'
 
-export default function CustomButton({ children, style, onpress, isCircle, textColor }: {
+interface CustomButtonTypes {
     children: string | React.ReactNode
     style?: ViewStyle | ViewStyle[]
     onpress?: () => void
     isCircle?: boolean
     textColor?: string
-}) {
+    variant?: 'h0' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'h7' | 'h8';
+}
+
+export default function CustomButton({
+    children,
+    style,
+    onpress,
+    isCircle,
+    textColor,
+    variant
+}: CustomButtonTypes
+) {
     return (
         <Pressable
             android_disableSound
@@ -19,10 +30,10 @@ export default function CustomButton({ children, style, onpress, isCircle, textC
             }]}>
             <CustomText fontFamily='PoppinsMedium' style={{
                 color: textColor ? textColor : Colors.background
-            }} variant='h5'>
+            }} variant={variant ? variant : 'h5'}>
                 {children}
             </CustomText>
-        </Pressable>
+        </Pressable >
     )
 }
 

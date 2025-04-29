@@ -1,6 +1,6 @@
-import Signup from '@/components/Signup';
 import { View, StyleSheet } from 'react-native'
 import Home from './main/home';
+import Signup from '@/components/screens/signup/Signup';
 
 export default function Index() {
     return (

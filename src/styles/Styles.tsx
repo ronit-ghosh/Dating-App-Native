@@ -41,7 +41,17 @@ export const UniStyles = StyleSheet.create({
     },
     showOnProfile: {
         fontFamily: "PoppinsLight"
-    }
+    },
+    card: {
+        width: "98%",
+        height: 300,
+        marginHorizontal: "auto",
+        borderWidth: 1,
+        borderRadius: 12,
+        borderColor: "#ccc",
+        overflow: "hidden",
+        marginVertical: 15
+    },
 });
 
 

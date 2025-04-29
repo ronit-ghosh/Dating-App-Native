@@ -1,6 +1,7 @@
 import { ScrollView, View } from 'react-native'
-import CustomText from './ui/CustomText'
+import CustomText from '../../ui/CustomText'
 import { homeStyles as styles } from '@/styles/home.styles'
+import { UniStyles } from '@/styles/Styles'
 
 export interface InfoTypes {
     icon: React.ReactNode
@@ -12,7 +13,7 @@ export default function InfoCard({ items, topbarInfo }: {
     topbarInfo: InfoTypes[]
 }) {
     return (
-        <View style={[styles.card, styles.infoCard]}>
+        <View style={[UniStyles.card, styles.infoCard]}>
             <ScrollView
                 showsHorizontalScrollIndicator={false}
                 horizontal
@@ -30,7 +31,7 @@ export default function InfoCard({ items, topbarInfo }: {
                                 <CustomText
                                     style={styles.topbarText}
                                     fontFamily='PoppinsMedium'
-                                    variant='h5'>{info.text}</CustomText>
+                                    variant='h6'>{info.text}</CustomText>
                             </View>
                         )
                     })
@@ -42,7 +43,7 @@ export default function InfoCard({ items, topbarInfo }: {
                         <View key={i} style={styles.infoCardItem}>
                             {item.icon}
                             <CustomText
-                                variant='h5'
+                                variant='h6'
                                 fontFamily='PoppinsMedium'
                                 style={styles.infoText}>
                                 {item.text}

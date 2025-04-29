@@ -2,22 +2,14 @@ import { StyleSheet } from "react-native";
 
 export const homeStyles = StyleSheet.create({
     container: {
-        paddingVertical: 0
+        paddingVertical: 0,
+        justifyContent: "center",
+        alignItems: "center"
     },
     img: {
-        width: "100%",
+        width: "99%",
         height: "100%",
         objectFit: "contain"
-    },
-    card: {
-        width: "98%",
-        height: 300,
-        borderWidth: 1,
-        marginHorizontal: "auto",
-        borderRadius: 12,
-        borderColor: "#ccc",
-        overflow: "hidden",
-        marginVertical: 15
     },
     promptCard: {
         height: 200,
@@ -56,6 +48,7 @@ export const homeStyles = StyleSheet.create({
         marginLeft: 5
     },
     header: {
+        width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",

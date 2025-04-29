@@ -17,9 +17,6 @@ export default function Password() {
     return (
         <View style={UniStyles.container}>
             <View style={styles.upper}>
-                <CustomText>
-                    {password}
-                </CustomText>
                 <CustomText
                     variant='h0'
                     style={styles.title}
@@ -34,6 +31,7 @@ export default function Password() {
                 </CustomText>
                 <View>
                     <TextInput
+                        secureTextEntry
                         onChange={handleInputChange}
                         style={styles.input}
                     />

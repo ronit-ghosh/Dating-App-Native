@@ -16,9 +16,6 @@ export default function Email() {
     return (
         <View style={UniStyles.container}>
             <View style={styles.upper}>
-                <CustomText>
-                    {email}
-                </CustomText>
                 <CustomText
                     variant='h0'
                     style={styles.title}

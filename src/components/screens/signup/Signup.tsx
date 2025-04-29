@@ -1,25 +1,25 @@
 import { StyleSheet, View, Image } from 'react-native';
 import { Video } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
-import CustomButton from './ui/CustomButton';
-import CustomText from './ui/CustomText';
 import { Colors } from '@/utils/Constants';
-import { ExternalLink } from './helper/ExternalLink';
 import { useRouter } from 'expo-router';
+import CustomText from '@/components/ui/CustomText';
+import { ExternalLink } from '@/components/helper/ExternalLink';
+import CustomButton from '@/components/ui/CustomButton';
 
 export default function Signup() {
     const videoSource = require("@/assets/videos/lume.mp4");
     const router = useRouter()
     return (
         <View style={styles.container}>
-            {/* <Video
+            <Video
                 source={videoSource}
                 style={styles.video}
                 // @ts-ignore
                 resizeMode="cover"
                 shouldPlay
                 isLooping
-            /> */}
+            />
             <LinearGradient
                 colors={['transparent', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.9)']}
                 style={styles.gradient}

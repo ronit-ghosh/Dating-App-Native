@@ -86,7 +86,7 @@ export default function Dob() {
                         </CustomText>
 
                         <CustomText
-                            variant='h6'
+                            variant='h8'
                             fontFamily='PoppinsRegular'
                             style={[styles.modalText, styles.modalDetailText]}>
                             Confirm your age is correct. Let's keep our community authentic.
@@ -124,7 +124,7 @@ export default function Dob() {
                 <View style={styles.dateContainer}>
                     <CustomText
                         variant='h4'
-                        fontFamily='PoppinsSemiBold'
+                        fontFamily='PoppinsRegular'
                         style={styles.dateText}>
                         {formatDate(date)}
                     </CustomText>

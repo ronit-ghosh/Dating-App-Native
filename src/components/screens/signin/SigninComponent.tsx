@@ -1,8 +1,8 @@
+import CustomButton from '@/components/ui/CustomButton';
 import { UniStyles } from '@/styles/Styles'
 import { useState } from 'react';
 import { View, StyleSheet } from 'react-native'
 import { HelperText, TextInput } from 'react-native-paper';
-import CustomButton from './ui/CustomButton';
 
 export default function SigninComponent() {
   const [email, setEmail] = useState('')
