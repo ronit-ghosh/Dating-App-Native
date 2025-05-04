@@ -5,12 +5,17 @@ import { useState } from 'react'
 import NextButton from '@/components/ui/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { nameStyles as styles } from '@/styles/name.styles'
+import { useUserStore } from '@/store/create-user'
 
 export default function Email() {
-    const [email, setEmail] = useState<string>()
+    const { firstname, lastname, setFirstname, setLastname } = useUserStore()
 
-    const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setEmail(text.nativeEvent.text)
+    const handleFirstnameChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
+        setFirstname(text.nativeEvent.text)
+    }
+
+    const handleLastnameChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
+        setLastname(text.nativeEvent.text)
     }
 
     return (
@@ -24,13 +29,15 @@ export default function Email() {
                 </CustomText>
                 <View style={styles.nameContainer}>
                     <TextInput
+                        value={firstname}
                         placeholder='First name'
-                        onChange={handleInputChange}
+                        onChange={handleFirstnameChange}
                         style={styles.input}
                     />
                     <TextInput
+                        value={lastname}
                         placeholder='Last name'
-                        onChange={handleInputChange}
+                        onChange={handleLastnameChange}
                         style={styles.input}
                     />
                 </View>

@@ -7,17 +7,19 @@ interface NextButtonTypes {
     path?: RelativePathString | ExternalPathString | "/"
     style?: ViewStyle
     onpressfn?: () => void
+    disabled?: boolean
 }
 
 export default function NextButton(props: NextButtonTypes) {
     const router = useRouter()
-    const { path, style, onpressfn } = props
+    const { path, style, onpressfn, disabled } = props
 
     return (
         <CustomButton
+            disabled={disabled ? true : false}
             onpress={
-                onpressfn? onpressfn :
-                () => router.push(path as RelativePathString)
+                onpressfn ? onpressfn :
+                    () => router.push(path as RelativePathString)
             }
             isCircle
             style={[styles.btn, style!]}>

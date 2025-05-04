@@ -2,16 +2,31 @@ import { NativeSyntheticEvent, TextInput, TextInputChangeEventData, View } from 
 import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
 import { ExternalLink } from '@/components/helper/ExternalLink'
-import { useState } from 'react'
 import NextButton from '@/components/ui/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { emailStyles as styles } from '@/styles/email.styles'
+import { useUserStore } from '@/store/create-user'
+import { useState } from 'react'
 
 export default function Email() {
-    const [email, setEmail] = useState<string>()
+    const { email, setEmail } = useUserStore()
+    const [error, setError] = useState<string>()
+
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
 
     const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setEmail(text.nativeEvent.text)
+        const isValid = isValidEmail(text.nativeEvent.text)
+        if (!isValid) {
+            setEmail("")
+            setError("Email format is wrong!")
+            return
+        } else {
+            setError("")
+            setEmail(text.nativeEvent.text)
+        }
     }
 
     return (
@@ -32,6 +47,9 @@ export default function Email() {
                         Learn More
                     </ExternalLink>
                 </CustomText>
+                <CustomText>
+                    {error}
+                </CustomText>
                 <View>
                     <TextInput
                         onChange={handleInputChange}
@@ -46,7 +64,10 @@ export default function Email() {
                     style={styles.helper}>
                     You can use any email, it just have to match proper email format.
                 </CustomText>
-                <NextButton path={"/user/name" as RelativePathString} />
+                <NextButton
+                    disabled={email === "" ? true : false}
+                    path={"/user/name" as RelativePathString}
+                />
             </View>
         </View>
     )

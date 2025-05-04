@@ -8,10 +8,11 @@ import { useState } from 'react'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { UniStyles } from '@/styles/Styles'
 import { dobStyles as styles } from '@/styles/dob.styles';
+import { useUserStore } from '@/store/create-user';
 
 export default function Dob() {
     const router = useRouter()
-    const [date, setDate] = useState(new Date())
+    const { dob, setDob } = useUserStore()
     const [showPicker, setShowPicker] = useState(false)
     const [showModal, setShowModal] = useState(false)
 
@@ -34,15 +35,15 @@ export default function Dob() {
         if (!selectedDate) return
         if (event.type === "set") {
             const currentDate = selectedDate
-            setDate(currentDate)
+            setDob(currentDate)
             setShowPicker(false)
         } else {
             toggleShowPicker()
         }
     }
 
-    const formatDate = (date: Date) => {
-        return date.toLocaleDateString('en-US', {
+    const formatDate = (dob: Date) => {
+        return dob.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
@@ -75,14 +76,14 @@ export default function Dob() {
                             variant='h1'
                             fontFamily='PoppinsSemiBold'
                             style={styles.modalText}>
-                            You're {calculateAge(date)}
+                            You're {calculateAge(dob)}
                         </CustomText>
 
                         <CustomText
                             variant='h5'
                             fontFamily='PoppinsRegular'
                             style={styles.modalText}>
-                            Born on {formatDate(date)}
+                            Born on {formatDate(dob)}
                         </CustomText>
 
                         <CustomText
@@ -118,7 +119,7 @@ export default function Dob() {
                     variant='h0'
                     style={styles.title}
                     fontFamily='ManropeBold'>
-                    What's your date of birth?
+                    What's your dob of birth?
                 </CustomText>
 
                 <View style={styles.dateContainer}>
@@ -126,7 +127,7 @@ export default function Dob() {
                         variant='h4'
                         fontFamily='PoppinsRegular'
                         style={styles.dateText}>
-                        {formatDate(date)}
+                        {formatDate(dob)}
                     </CustomText>
                     <CustomButton
                         isCircle
@@ -142,7 +143,7 @@ export default function Dob() {
                         showPicker &&
                         <DateTimePicker
                             onChange={handleDateChange}
-                            value={date}
+                            value={dob}
                             display='spinner'
                             maximumDate={new Date()}
                         />

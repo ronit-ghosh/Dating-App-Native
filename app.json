@@ -24,6 +24,12 @@
     },
     "plugins": [
       [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Lume to use your location."
+        }
+      ],
+      [
         "expo-font",
         {
           "fonts": ["./src/assets/fonts/Giarek.ttf"]

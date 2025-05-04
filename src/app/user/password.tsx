@@ -5,13 +5,14 @@ import { useState } from 'react'
 import NextButton from '@/components/ui/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { passwordStyles as styles } from '@/styles/password.styles'
+import { useUserStore } from '@/store/create-user'
 
 export default function Password() {
     const router = useRouter()
-    const [password, setpassword] = useState<string>()
+    const { password, setPassword } = useUserStore()
 
     const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setpassword(text.nativeEvent.text)
+        setPassword(text.nativeEvent.text)
     }
 
     return (
@@ -31,6 +32,7 @@ export default function Password() {
                 </CustomText>
                 <View>
                     <TextInput
+                        value={password}
                         secureTextEntry
                         onChange={handleInputChange}
                         style={styles.input}
