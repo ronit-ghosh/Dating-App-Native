@@ -15,17 +15,10 @@ export default function Dob() {
     const { dob, setDob } = useUserStore()
     const [showPicker, setShowPicker] = useState(false)
     const [showModal, setShowModal] = useState(false)
-
+    
     const toggleShowPicker = () => setShowPicker(!showPicker)
-
-    const openConfirmModal = () => {
-        setShowModal(true)
-    }
-
-    const closeModal = () => {
-        setShowModal(false)
-    }
-
+    const openConfirmModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
     const confirmAndContinue = () => {
         closeModal()
         router.push('/user/location')
@@ -61,6 +54,13 @@ export default function Dob() {
 
         return age;
     }
+
+    const today = new Date();
+    const eighteenYearsAgo = new Date(
+        today.getFullYear() - 18,
+        today.getMonth(),
+        today.getDate()
+    );
 
     return (
         <View style={[UniStyles.container, styles.container]}>
@@ -119,7 +119,7 @@ export default function Dob() {
                     variant='h0'
                     style={styles.title}
                     fontFamily='ManropeBold'>
-                    What's your dob of birth?
+                    What's your dob of birth? {dob.toLocaleDateString()}
                 </CustomText>
 
                 <View style={styles.dateContainer}>
@@ -127,7 +127,7 @@ export default function Dob() {
                         variant='h4'
                         fontFamily='PoppinsRegular'
                         style={styles.dateText}>
-                        {formatDate(dob)}
+                        {formatDate(eighteenYearsAgo)}
                     </CustomText>
                     <CustomButton
                         isCircle
@@ -145,7 +145,7 @@ export default function Dob() {
                             onChange={handleDateChange}
                             value={dob}
                             display='spinner'
-                            maximumDate={new Date()}
+                            maximumDate={eighteenYearsAgo}
                         />
                     }
                 </View>

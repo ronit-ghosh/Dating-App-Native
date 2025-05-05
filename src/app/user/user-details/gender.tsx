@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import CustomText from '@/components/ui/CustomText'
 import { RelativePathString } from 'expo-router'
-import { Colors } from '@/utils/Constants'
+import { Colors } from '@/utils/constants'
 import { useState } from 'react'
 import NextButton from '@/components/ui/NextButton'
 import { RadioButton } from 'react-native-paper';

@@ -9,13 +9,26 @@ import { useUserStore } from '@/store/create-user'
 
 export default function Email() {
     const { firstname, lastname, setFirstname, setLastname } = useUserStore()
+    const [error, setError] = useState<string>()
 
     const handleFirstnameChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setFirstname(text.nativeEvent.text)
+        const value = text.nativeEvent.text
+        if (value.length < 3) {
+            setError("Firstname has to be 3 charcter long!")
+        } else {
+            setError("")
+            setFirstname(text.nativeEvent.text)
+        }
     }
 
     const handleLastnameChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
-        setLastname(text.nativeEvent.text)
+        const value = text.nativeEvent.text
+        if (value.length < 3) {
+            setError("Lastname has to be 3 charcter long!")
+        } else {
+            setError("")
+            setLastname(text.nativeEvent.text)
+        }
     }
 
     return (
@@ -27,15 +40,18 @@ export default function Email() {
                     fontFamily='ManropeBold'>
                     Enter your name
                 </CustomText>
+                <CustomText style={{ color: "red" }}>
+                    {error}
+                </CustomText>
                 <View style={styles.nameContainer}>
                     <TextInput
-                        value={firstname}
+                        defaultValue={firstname}
                         placeholder='First name'
                         onChange={handleFirstnameChange}
                         style={styles.input}
                     />
                     <TextInput
-                        value={lastname}
+                        defaultValue={lastname}
                         placeholder='Last name'
                         onChange={handleLastnameChange}
                         style={styles.input}
@@ -49,7 +65,10 @@ export default function Email() {
                     style={styles.helper}>
                     Only matches can see your last name.
                 </CustomText>
-                <NextButton path={"/user/dob" as RelativePathString} />
+                <NextButton
+                    disabled={!firstname || !lastname || error ? true : false}
+                    path={"/user/dob" as RelativePathString}
+                />
             </View>
         </View>
     )

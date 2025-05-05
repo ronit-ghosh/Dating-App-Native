@@ -32,7 +32,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./src/assets/fonts/Giarek.ttf"]
+          "fonts": [
+            "./src/assets/fonts/Giarek.ttf"
+          ]
         }
       ],
       "expo-router",
@@ -52,7 +54,8 @@
           "supportsPictureInPicture": true
         }
       ],
-      "react-native-video"
+      "react-native-video",
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true

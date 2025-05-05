@@ -1,7 +1,7 @@
 import { StyleSheet, View, Image } from 'react-native';
 import { Video } from 'expo-av';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Colors } from '@/utils/Constants';
+import { Colors } from '@/utils/constants';
 import { useRouter } from 'expo-router';
 import CustomText from '@/components/ui/CustomText';
 import { ExternalLink } from '@/components/helper/ExternalLink';

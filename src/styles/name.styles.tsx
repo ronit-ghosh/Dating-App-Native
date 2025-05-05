@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { UniStyles } from "./Styles";
-import { Colors } from "@/utils/Constants";
+import { Colors } from "@/utils/constants";
 
 export const nameStyles = StyleSheet.create({
     upper: UniStyles.upper,

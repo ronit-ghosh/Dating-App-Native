@@ -20,9 +20,7 @@ export default function Email() {
     const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
         const isValid = isValidEmail(text.nativeEvent.text)
         if (!isValid) {
-            setEmail("")
             setError("Email format is wrong!")
-            return
         } else {
             setError("")
             setEmail(text.nativeEvent.text)
@@ -47,11 +45,12 @@ export default function Email() {
                         Learn More
                     </ExternalLink>
                 </CustomText>
-                <CustomText>
+                <CustomText style={{ color: "red" }}>
                     {error}
                 </CustomText>
                 <View>
                     <TextInput
+                        defaultValue={email}
                         onChange={handleInputChange}
                         style={styles.input}
                     />
@@ -65,7 +64,7 @@ export default function Email() {
                     You can use any email, it just have to match proper email format.
                 </CustomText>
                 <NextButton
-                    disabled={email === "" ? true : false}
+                    disabled={!email || error ? true : false}
                     path={"/user/name" as RelativePathString}
                 />
             </View>

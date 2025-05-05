@@ -1,4 +1,4 @@
-import { Colors } from '@/utils/Constants'
+import { Colors } from '@/utils/constants'
 import { Pressable, StyleSheet, ViewStyle } from 'react-native'
 import CustomText from './CustomText'
 
