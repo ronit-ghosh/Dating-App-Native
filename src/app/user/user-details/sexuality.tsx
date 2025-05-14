@@ -8,9 +8,10 @@ import { RadioButton, Checkbox } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function Sexuality() {
-    const [sexuality, setSexuality] = useState<string>('');
+    const { sexuality, setSexuality } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const SEXUALITIES = [
@@ -85,7 +86,10 @@ export default function Sexuality() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/date-gender" as RelativePathString} />
+                <NextButton
+                    disabled={!sexuality}
+                    path={"/user/user-details/date-gender" as RelativePathString}
+                />
             </View>
         </View>
     )

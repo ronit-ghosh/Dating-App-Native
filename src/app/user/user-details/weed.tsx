@@ -7,16 +7,16 @@ import NextButton from '@/components/ui/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function Weed() {
     const [ans, setAns] = useState<string>('');
+    const { setWeed } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const ANS = [
         "yes",
-        "sometimes",
-        "no",
-        "prefer not to say"
+        "no"
     ]
 
     return (
@@ -30,7 +30,14 @@ export default function Weed() {
                 </CustomText>
                 <View style={styles.selectSexContainer}>
                     <RadioButton.Group
-                        onValueChange={value => setAns(value)}
+                        onValueChange={value => {
+                            setAns(value)
+                            if (value === 'yes') {
+                                setWeed(true)
+                            } else if (value === 'no') {
+                                setWeed(false)
+                            }
+                        }}
                         value={ans}>
                         {
                             ANS.map((ans, i) => {

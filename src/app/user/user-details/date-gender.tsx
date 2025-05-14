@@ -7,16 +7,15 @@ import NextButton from '@/components/ui/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function DateGender() {
-    const [gender, setGender] = useState<string>('');
+    const { datingGender, setDatingGender } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const GENDERS = [
-        "man",
-        "woman",
-        "non-binary",
-        "everyone"
+        "MALE",
+        "FEMALE"
     ]
 
     return (
@@ -30,8 +29,8 @@ export default function DateGender() {
                 </CustomText>
                 <View style={styles.selectSexContainer}>
                     <RadioButton.Group
-                        onValueChange={value => setGender(value)}
-                        value={gender}>
+                        onValueChange={value => setDatingGender(value as 'MALE' | 'FEMALE')}
+                        value={datingGender}>
                         {
                             GENDERS.map((gender, i) => {
                                 return (
@@ -60,7 +59,10 @@ export default function DateGender() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/dating-intention" as RelativePathString} />
+                <NextButton
+                    disabled={!datingGender}
+                    path={"/user/user-details/dating-intention" as RelativePathString}
+                />
             </View>
         </View>
     )

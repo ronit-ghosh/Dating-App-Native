@@ -7,17 +7,17 @@ import NextButton from '@/components/ui/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function Drugs() {
     const router = useRouter()
     const [ans, setAns] = useState<string>('');
+    const { setDrugs } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const ANS = [
         "yes",
-        "sometimes",
-        "no",
-        "prefer not to say"
+        "no"
     ]
 
     return (
@@ -31,7 +31,14 @@ export default function Drugs() {
                 </CustomText>
                 <View style={styles.selectSexContainer}>
                     <RadioButton.Group
-                        onValueChange={value => setAns(value)}
+                        onValueChange={value => {
+                            setAns(value)
+                            if (value === 'yes') {
+                                setDrugs(true)
+                            } else if (value === 'no') {
+                                setDrugs(false)
+                            }
+                        }}
                         value={ans}>
                         {
                             ANS.map((ans, i) => {

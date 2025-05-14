@@ -1,12 +1,12 @@
 import { Stack } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 
-export default function SigninLayout() {
+export default function SignupLayout() {
     return (
         <>
             <StatusBar
-                backgroundColor='#282828'
-                style='light'
+                translucent
+                style='inverted'
             />
             <Stack screenOptions={{
                 headerShown: false,

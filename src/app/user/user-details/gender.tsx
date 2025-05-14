@@ -7,11 +7,12 @@ import NextButton from '@/components/ui/NextButton'
 import { RadioButton } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { genderStyles as styles } from '@/styles/gender.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function Gender() {
-  const [gender, setGender] = useState<string>('');
+  const { gender, setGender } = useUserDetailsStore()
 
-  const GENDERS = ['man', 'woman', 'non-binary'];
+  const GENDERS = ['MALE', 'FEMALE'];
 
   return (
     <View style={UniStyles.container}>
@@ -30,7 +31,7 @@ export default function Gender() {
         </CustomText>
         <View style={styles.selectGenderContainer}>
           <RadioButton.Group
-            onValueChange={value => setGender(value)}
+            onValueChange={(value) => setGender(value as 'MALE' | 'FEMALE')}
             value={gender}>
             {
               GENDERS.map((gender, i) => {
@@ -57,7 +58,10 @@ export default function Gender() {
           style={styles.helper}>
           Visible on your profile.
         </CustomText>
-        <NextButton path={"/user/user-details/sexuality" as RelativePathString} />
+        <NextButton
+          disabled={!gender}
+          path={"/user/user-details/sexuality" as RelativePathString}
+        />
       </View>
     </View>
   )

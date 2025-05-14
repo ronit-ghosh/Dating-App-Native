@@ -7,16 +7,17 @@ import NextButton from '@/components/ui/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function RelationshipType() {
-    const [relationshipType, setRelationshipType] = useState<string>('');
+    const { relationshipType, setRelationshipType } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const RELATIONSHIP_TYPE = [
         "monogamy",
         "non-monogamy",
         "figuring out my relationship type"
-      ]      
+    ]
 
     return (
         <View style={UniStyles.container}>
@@ -25,7 +26,7 @@ export default function RelationshipType() {
                     variant='h0'
                     style={styles.title}
                     fontFamily='ManropeBold'>
-                    Who do you want to date?
+                    What type of relationship you want?
                 </CustomText>
                 <View style={styles.selectSexContainer}>
                     <RadioButton.Group
@@ -59,7 +60,10 @@ export default function RelationshipType() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/work" as RelativePathString} />
+                <NextButton
+                    disabled={!relationshipType}
+                    path={"/user/user-details/work" as RelativePathString}
+                />
             </View>
         </View>
     )

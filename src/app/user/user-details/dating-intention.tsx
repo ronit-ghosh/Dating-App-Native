@@ -8,12 +8,13 @@ import { RadioButton, Checkbox } from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function Sexuality() {
-    const [date, setDate] = useState<string>('');
+    const { datingIntention, setDatingIntention } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
-    const SEXUALITIES = [
+    const DATING_INTENTIONS = [
         "life partner",
         "long-term relationship",
         "long-term relationship, open to short",
@@ -34,10 +35,10 @@ export default function Sexuality() {
                 </CustomText>
                 <ScrollView style={styles.selectSexContainer}>
                     <RadioButton.Group
-                        onValueChange={value => setDate(value)}
-                        value={date}>
+                        onValueChange={value => setDatingIntention(value)}
+                        value={datingIntention}>
                         {
-                            SEXUALITIES.map((date, i) => {
+                            DATING_INTENTIONS.map((date, i) => {
                                 return (
                                     <RadioButton.Item
                                         key={i}
@@ -69,7 +70,10 @@ export default function Sexuality() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/relationship-types" as RelativePathString} />
+                <NextButton
+                    disabled={!datingIntention}
+                    path={"/user/user-details/relationship-types" as RelativePathString}
+                />
             </View>
         </View>
     )

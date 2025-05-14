@@ -7,9 +7,10 @@ import NextButton from '@/components/ui/NextButton'
 import { RadioButton, Checkbox } from 'react-native-paper';
 import { UniStyles } from '@/styles/Styles'
 import { sexualityStyles as styles } from '@/styles/sexuality.styles'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function Degree() {
-    const [degree, setDegree] = useState<string>('');
+    const { highestDegree, setHighestDegree } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const DEGREES = [
@@ -30,8 +31,8 @@ export default function Degree() {
                 </CustomText>
                 <View style={styles.selectSexContainer}>
                     <RadioButton.Group
-                        onValueChange={value => setDegree(value)}
-                        value={degree}>
+                        onValueChange={value => setHighestDegree(value)}
+                        value={highestDegree}>
                         {
                             DEGREES.map((degree, i) => {
                                 return (
@@ -60,7 +61,10 @@ export default function Degree() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/drink" as RelativePathString} />
+                <NextButton
+                    disabled={!highestDegree}
+                    path={"/user/user-details/drink" as RelativePathString}
+                />
             </View>
         </View>
     )

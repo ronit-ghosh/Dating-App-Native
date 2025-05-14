@@ -6,9 +6,10 @@ import NextButton from '@/components/ui/NextButton'
 import { UniStyles } from '@/styles/Styles'
 import { emailStyles as styles } from '@/styles/email.styles'
 import { Checkbox } from 'react-native-paper'
+import { useUserDetailsStore } from '@/store/create-user-details'
 
 export default function JobTitle() {
-    const [work, setWork] = useState<string>()
+    const { work, setWork } = useUserDetailsStore()
     const [showOnProfile, setShowOnProfile] = useState(false)
 
     const handleInputChange = (text: NativeSyntheticEvent<TextInputChangeEventData>) => {
@@ -32,7 +33,7 @@ export default function JobTitle() {
                 </View>
             </View>
             <View style={styles.helperContainer}>
-            <Checkbox.Item
+                <Checkbox.Item
                     labelVariant='bodyMedium'
                     // @ts-ignore
                     background=""
@@ -41,7 +42,10 @@ export default function JobTitle() {
                     label="Visible on your profile."
                     status={showOnProfile ? "checked" : "unchecked"}
                 />
-                <NextButton path={"/user/user-details/job-title" as RelativePathString} />
+                <NextButton
+                    disabled={work.length === 0 ? true : false}
+                    path={"/user/user-details/job-title" as RelativePathString}
+                />
             </View>
         </View>
     )
